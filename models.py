@@ -18,11 +18,11 @@ from django.forms.util import flatatt
 from django.utils.html import escape, conditional_escape
 import django.db.models
 from django.utils.encoding import StrAndUnicode, force_unicode, smart_unicode
-
+from django.conf import settings
 
 class HtmlTextarea(django.forms.Textarea):
     class Media:
-         js = ('/static/ckeditor/ckeditor.js',)
+         js = (settings.STATIC_URL + '/ckeditor/ckeditor.js',)
     def render(self, name, value, attrs=None):
         if value is None: value = ''
         if not attrs: attrs = {}
